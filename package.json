@@ -1,0 +1,47 @@
+{
+  "name": "docreader",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Ask questions about documents of any type, or convert them to Markdown or JSON, with an AI agent in a locked-down sandbox.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server/main.ts start",
+    "build": "node src/server/main.ts build",
+    "dev:ui": "vite --config src/ui/vite.config.ts",
+    "test": "node --test 'test/**/*.test.ts'",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "knip": "knip",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm knip && pnpm test"
+  },
+  "dependencies": {
+    "@google-cloud/documentai": "^10.2.0",
+    "@google/genai": "^3.3.0",
+    "@hono/node-server": "^1.19.5",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "pdf-lib": "^1.17.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "knip": "^6.45.1",
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "typescript": "^7.0.2",
+    "vite": "^7.2.2"
+  },
+  "engines": {
+    "node": ">=24.2"
+  },
+  "packageManager": "pnpm@12.4.2"
+}

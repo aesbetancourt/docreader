@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import", "react", "node"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "env": { "node": true, "browser": true, "es2024": true },
+  "ignorePatterns": ["src/ui/dist/**"],
+  "rules": {
+    // Loops that await are sequential on purpose: stream reads, ordered file copies, container cleanup.
+    "no-await-in-loop": "off",
+    // The lists keyed by index are append-only and never reorder.
+    "react/no-array-index-key": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/no-unassigned-import": ["warn", { "allow": ["**/*.css"] }],
+    "typescript/no-explicit-any": "off",
+    "typescript/no-non-null-assertion": "off"
+  }
+}

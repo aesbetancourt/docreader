@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+!.env.example
+secrets
+jobs
+cache
+node_modules
+.venv
+test
+samples
+src/ui
+src/server
+**/__pycache__

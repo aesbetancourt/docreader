@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+.venv/
+
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+secrets/
+
+# Runtime data: jobs, tool caches, web build
+jobs/
+cache/
+src/ui/dist/
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/
+*.log

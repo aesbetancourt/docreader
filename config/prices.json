@@ -1,0 +1,28 @@
+{
+  "asOf": "2026-11-15",
+  "notes": "USD. Model calls are charged at the cost OpenCode Go reports for each call; llmDefault is used only when a response reports no cost. Tool prices are Google list prices.",
+  "llm": {},
+  "llmDefault": {
+    "inputPerMTok": 2.0,
+    "outputPerMTok": 10.0,
+    "source": "Conservative fallback, used only when upstream reports no cost"
+  },
+  "tools": {
+    "ocr_pages": {
+      "perPage": 0.0015,
+      "processorVersion": "pretrained-ocr-v2.1-2024-08-07",
+      "source": "https://cloud.google.com/document-ai/pricing (Enterprise Document OCR, $1.50 per 1,000 pages up to 5M)"
+    },
+    "parse_layout": {
+      "perPage": 0.01,
+      "processorVersion": "pretrained-layout-parser-v1.0-2024-06-03",
+      "source": "https://cloud.google.com/document-ai/pricing (Layout Parser, $10 per 1,000 pages)"
+    },
+    "describe_figure": {
+      "inputPerMTok": 0.75,
+      "outputPerMTok": 3.75,
+      "estimatePerCall": 0.01,
+      "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing (gemini-3.8-flash, global endpoint, promotional price until 2026-12-31; then $1.50 / $7.50)"
+    }
+  }
+}

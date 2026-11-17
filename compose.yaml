@@ -1,0 +1,47 @@
+# Broker service. Start with: docreader broker up
+# Names and ports match src/shared/constants.ts (BROKER, IMAGES).
+name: docreader
+services:
+  broker:
+    build:
+      context: .
+      dockerfile: docker/broker.Dockerfile
+    image: docreader-broker:dev
+    container_name: docreader-broker
+    restart: unless-stopped
+    user: "${DOCREADER_UID:-1000}:${DOCREADER_GID:-1000}"
+    # Secrets and settings: see .env.example.
+    env_file:
+      - path: .env
+        required: true
+    environment:
+      JOBS_DIR: /jobs
+      CACHE_DIR: /cache
+      PRICES_FILE: /app/config/prices.json
+      GOOGLE_APPLICATION_CREDENTIALS: /run/docreader-secrets/gcp-key.json
+    volumes:
+      - ${DOCREADER_JOBS_DIR:-./jobs}:/jobs
+      - ./cache/broker:/cache
+      - ./secrets:/run/docreader-secrets:ro
+    ports:
+      # Host loopback only. 7700: LLM proxy + MCP. 7701: admin API.
+      - "127.0.0.1:7700:7700"
+      - "127.0.0.1:7701:7701"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:7700/healthz').then(r => process.exit(r.ok ? 0 : 1), () => process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
