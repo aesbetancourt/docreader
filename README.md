@@ -7,6 +7,7 @@ Give docreader your files and a question. An AI agent gets a toolbox and a sandb
 ![pnpm](https://img.shields.io/badge/pnpm-12-F69220?logo=pnpm&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-required-2496ED?logo=docker&logoColor=white)
 ![Agent](https://img.shields.io/badge/agent-OpenCode-111111)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue)
 
 ## Why agents
 
@@ -203,3 +204,7 @@ uv venv .venv && uv pip install --python .venv/bin/python openpyxl python-docx
 - Broker state (tokens, spend) is in memory. Restarting the broker ends the running requests.
 - The budget check runs before each model call, so one call can pass the budget by its own cost.
 - Source labels check quotes and cell values, not the reasoning. A wrong conclusion drawn from correct sources is not detected.
+
+## License
+
+[MIT](LICENSE) © 2026 Alejandro Sanchez

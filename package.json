@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "description": "Ask questions about documents of any type, or convert them to Markdown or JSON, with an AI agent in a locked-down sandbox.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "node src/server/main.ts start",
